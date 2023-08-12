@@ -1,5 +1,5 @@
 const getProduct = (req, res) => {
-    res.send('Geting product');
+    res.send('Getting product');
 };
 
 const createProduct = (req, res) => {
