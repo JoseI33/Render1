@@ -1,7 +1,17 @@
 const userModels = require('../models/user');
 
-const Hello = (req, res) => {
-    res.send('Llevando usuarios');
+const getUsers = async (req, res) => {
+    try {
+        const users = await userModels.find();
+        if (users) {
+            return res.status(200).send(users);
+        } else {
+            return res.status(200).send([]);
+        }
+    } catch (error) {
+       console.log(error);
+       res.status(500).send(error)
+    }
 };
 
 const userCreate = async (req, res) => {
@@ -25,6 +35,6 @@ const userCreate = async (req, res) => {
 
 
 module.exports = {
-    Hello,
+    getUsers,
     userCreate,
 };
