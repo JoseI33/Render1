@@ -44,8 +44,27 @@ const register = async (req, res) => {
 
 };
 
-const login = (req, res) => {
-    res.send('Create product');
+const login = async (req, res) => {
+    const (email, password) = req.body;
+    if(!email || !password) {
+        return res.status(400).send({msg:"todos los campos son requeridos"})
+    }
+
+    const emailLowerCase = email.toLowerCase();
+
+    try {
+        const findUser = await userModel.findOne({email:emailLowerCase})
+       
+        if(findUser) {
+            const isMatch = bcrypt.compareSync(password, findUser.password)
+        }
+
+    } catch () {
+        
+    }
+
+
+
 };
 
 
