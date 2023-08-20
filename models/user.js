@@ -19,4 +19,4 @@ const UserSchema = mongoose.Schema({
 
 })
 
-module.exports = mongoose.model('NinjaUsuario', UserSchema);
+module.exports = mongoose.model('ninjausuarios', UserSchema);

@@ -1,4 +1,4 @@
-const User = require('../models/user');
+const userModel = require('../models/user');
 const bcrypt = require('bcrypt');
 const jwt = require('../utils/jwt');
 
@@ -6,6 +6,7 @@ const register = async (req, res) => {
     const {
         name, email, password
     } = req.body
+    
     // Primer paso
     if (!email) {
         return res.status(400).send({ msg: "Email is required" });
