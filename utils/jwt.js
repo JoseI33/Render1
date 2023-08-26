@@ -8,7 +8,8 @@ const createToken = (user) => {
     const payload = { // la informacion del token
         user_id: user._id, //lo que genera mongoose
         iat: Date.now(), //cuando se crea
-         exp: expToken.getTime() //expiracion del tiempo de logueo.
+         exp: expToken.getTime(), //expiracion del tiempo de logueo.
+         role: user.role //lo agregamos para poder decirle que es admin.
     }
 
     return jwt.sign(payload, process.env.JWT_KEY) //sign es la firma del token.
