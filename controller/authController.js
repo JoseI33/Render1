@@ -22,7 +22,7 @@ const register = async (req, res) => {
         role: "user"
     })
 
-    const salt = bcrypt.genSaltSync(Number(process.env.SALT)); //bcript encripta la base
+    const salt = bcrypt.genSaltSync(Number(process.env.SALT)); //bcrypt encripta la base
     const passwordHash = bcrypt.hashSync(password, salt);
     user.password = passwordHash //la password representa la clave del usuario / la passwordHash es la nueva clave encriptada
     // console.log(password);

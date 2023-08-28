@@ -1,6 +1,6 @@
 const userModels = require('../models/user');
 
-const getUsers = async (req, res) => {
+const getUsers = async (req, res) => { // req es una repeticion, res es una respuesta.
     try {
         const users = await userModels.find();
         if (users) {
@@ -14,15 +14,16 @@ const getUsers = async (req, res) => {
     }
 };
 
-const userCreate = async (req, res) => {
+const userCreate = async (req, res) => { 
     const {name, email, password} = req.body 
+   
     
-    const newUser = new userModels ({
+    const newUser = new userModels ({ //Tae la informacion de usercreate y crea un usuario.
         name,
         email,
         password
     })
-    try {
+    try { // Control de errores.
         const user = await newUser.save();
         return res.status(200).send(user);
     } catch (error) {
